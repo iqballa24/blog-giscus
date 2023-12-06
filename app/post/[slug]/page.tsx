@@ -3,6 +3,7 @@ import Markdown from 'markdown-to-jsx';
 import matter from 'gray-matter';
 import { getPostMetadata } from '@/components/getPostMetadata';
 import { notFound } from 'next/navigation';
+import Comments from '@/components/Comment';
 
 const getPostContent = (slug: string) => {
   try {
@@ -41,6 +42,8 @@ const PostPage = (props: any) => {
       <article className="prose">
         <Markdown>{post.content}</Markdown>
       </article>
+
+      <Comments />
     </div>
   );
 };
