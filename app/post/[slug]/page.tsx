@@ -1,9 +1,13 @@
 import fs from 'fs';
-import Markdown from 'markdown-to-jsx';
+
+import { extractHeadings } from 'extract-md-headings';
 import matter from 'gray-matter';
-import { getPostMetadata } from '@/components/getPostMetadata';
+import Markdown from 'markdown-to-jsx';
 import { notFound } from 'next/navigation';
+
 import Comments from '@/components/Comment';
+import { getPostMetadata } from '@/components/getPostMetadata';
+import MainContent from '@/components/MainContent';
 
 const getPostContent = (slug: string) => {
   try {
@@ -12,7 +16,9 @@ const getPostContent = (slug: string) => {
     const content = fs.readFileSync(file, 'utf8');
     const matterResult = matter(content);
 
-    return matterResult;
+    const headingsContent = extractHeadings(file);
+
+    return { ...matterResult, headingsContent };
   } catch (err) {
     return null;
   }
@@ -30,21 +36,21 @@ const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
 
+  const listTitle = post?.headingsContent || [];
+
   if (!post) return notFound();
 
   return (
-    <div>
+    <>
       <div className="my-12 text-center">
         <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
         <p className="text-slate-400 mt-2">{post.data.date}</p>
       </div>
 
-      <article className="prose">
-        <Markdown>{post.content}</Markdown>
-      </article>
+      <MainContent content={post.content} listTitle={listTitle} />
 
       <Comments />
-    </div>
+    </>
   );
 };
 

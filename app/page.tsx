@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { getPostMetadata } from '@/components/getPostMetadata';
 import PostPreview from '@/components/PostPreview';
 

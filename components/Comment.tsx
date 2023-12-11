@@ -15,7 +15,7 @@ export default function Comments() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="dark_dimmed"
+      theme="noborder_dark"
       lang="en"
       loading="lazy"
     />

@@ -26,7 +26,7 @@ export default function RootLayout({
         <Link href="/">
           <h1 className="text-2xl text-white font-bold mt-4">Blog</h1>
         </Link>
-        <p className="text-slate-300">🤟 Welcome to my tech blog. 💻</p>
+        <p className="text-slate-300">🤟 Hello world. 💻</p>
       </div>
     </header>
   );
@@ -34,14 +34,14 @@ export default function RootLayout({
   const footer = (
     <footer>
       <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
-        <h3>Developed by Iqbal</h3>
+        <h3>test</h3>
       </div>
     </footer>
   );
 
   return (
     <html lang="en">
-      <body className="mx-auto  max-w-2xl px-6">
+      <body className="mx-auto max-w-4xl px-6">
         {header}
         {children}
         {footer}

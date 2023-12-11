@@ -1,5 +1,7 @@
-import matter from 'gray-matter';
 import fs from 'fs';
+
+import matter from 'gray-matter';
+
 import { PostMetadata } from '@/components/PostMetadata';
 
 export const getPostMetadata = (): PostMetadata[] => {
